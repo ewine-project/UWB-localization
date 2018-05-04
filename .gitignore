@@ -1,2 +1,9 @@
 .idea/**
 *.pyc
+checkpoint
+*.index
+*.meta
+*.data-*
+*.pbtxt
+*.pkl
+*checkpoint*
