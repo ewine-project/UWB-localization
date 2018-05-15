@@ -11,12 +11,12 @@ The code needs the following python modules:
 Installing Python software with Virtualenv can be useful to separate main system Python installation from separate installation with distinctive set of features and libraries installed. This prevents breaking the existing installation of Python and libraries.
 
 ###### 1. Install pip and Virtualenv:	
-	$ sudo apt-get install python-pip python-dev python-virtualenv for Python 2.7
-	$ sudo apt-get install python3-pip python3-dev python-virtualenv for Python 3.n
+	$ sudo apt-get install python-pip python-dev python-virtualenv    # Python 2.7
+	$ sudo apt-get install python3-pip python3-dev python-virtualenv  # Python 3.n
 
 ###### 2. Create a new virtual environment (in this case it's named 'tf' and is placed in /home/username/tf.):
-	$ virtualenv --system-site-packages /home/username/tf # for Python 2.7
-	$ virtualenv --system-site-packages -p python3 /home/username/tf # for Python 3.n
+	$ virtualenv --system-site-packages /home/username/tf             # Python 2.7
+	$ virtualenv --system-site-packages -p python3 /home/username/tf  # Python 3.n
 
 ###### 3. Activate the new virtual environment 'tf':
 	$ source ~/tf/bin/activate
@@ -43,7 +43,33 @@ If the installation process fails, for more details check the official [Tensorfl
 ###### 8. Install scipy Python package:
 	(tf)$ pip install scipy   # Python 2.7
 	(tf)$ pip3 install scipy  # Python 3
+
+## Using the software
+
+### Building the models
+For NLoS classification and ranging error regression models need to be built respectively. 	
+
+**Note:** all scripts can be run only in a Python environment, where the Tensorflow is installed. If you installed Tensorflow using Virtualenv (as is presented in this tutorial), the selected **tf** virtual environment should be activated before running the scripts.
+
+##### Building the NLoS classification model:
+
+	# Inside the folder NLOSClassificationModel run scrip build_classification_model.py
+	(tf)$ python build_classification_model.py    # Python 2.7
+	(tf)$ python3 build_classification_model.py   # Python 3
+
+**Note**: The process of training the classification model takes around 15 minutes on an average computer.
+
+##### Building the ranging error regression model
 	
+	# Inside the folder RangingErrorModel run script build_regression_model.py
+	(tf)$ python build_regression_model.py    # Python 2.7
+	(tf)$ python3 build_regression_model.py   # Python 3
+
+**Note**: The process of training the classification model takes around 1 hour on an average computer.
+
+
+### Running the localization scripts
+To run localization evaluation scripts using classification and error regression techniques to mitigate the effects of ranging errors, check the contents of the folder **evaluation**.
 
 ## Citation
 If you are using our data set in your research, citation of the following paper would be greatly appreciated.
