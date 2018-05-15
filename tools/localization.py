@@ -5,9 +5,9 @@ import random
 
 def get_cir(data):
 	""" cut 152 bytes of cir from data """
-	fp_idx = int(data[6])
+	fp_idx = int(data[8])
 
-	cir = np.array([data[fp_idx + 15: fp_idx + 15 + 152] / data[13]])
+	cir = np.array([data[fp_idx + 15: fp_idx + 15 + 152] / data[17]])
 
 	return cir
 
@@ -35,7 +35,7 @@ def select_anchors_classification(data, n, classifier):
 			# random number
 			randidx = random.randint(0, len(data) - 1)
 			# get anchor position
-			temp_node = np.array([data[randidx][3], data[randidx][4]])
+			temp_node = np.array([data[randidx][2], data[randidx][3]])
 
 			eq_stat = 0
 
@@ -46,7 +46,7 @@ def select_anchors_classification(data, n, classifier):
 			if np.size(nodelist) == 0:
 				if filt != 1:
 					# get measured anchor range to tag
-					temp_len = data[randidx][5]
+					temp_len = data[randidx][4]
 					nodelist.append([temp_node, temp_len])
 					stat = 0
 			else:
@@ -55,7 +55,7 @@ def select_anchors_classification(data, n, classifier):
 					eq_stat = eq_stat | (np.linalg.norm(temp_node) == np.linalg.norm(item[0]))
 				if (filt == 0) and (eq_stat != 1):
 					# get measured anchor range to tag
-					temp_len = data[randidx][5]
+					temp_len = data[randidx][4]
 					nodelist.append([temp_node, temp_len])
 					stat = 0
 
@@ -87,24 +87,24 @@ def select_anchors(data, n, NLOS):
 			# random number
 			randidx = random.randint(0, len(data) - 1)
 			# get anchor position
-			temp_node = np.array([data[randidx][3], data[randidx][4]])
+			temp_node = np.array([data[randidx][2], data[randidx][3]])
 
 			eq_stat = 0
 
 			filt = 1
 			# check LOS/NLOS
-			if NLOS & int(data[randidx][0]):
+			if NLOS & int(data[randidx][5]):
 				filt = 0
-			if NLOS & (not int(data[randidx][0])):
+			if NLOS & (not int(data[randidx][5])):
 				filt = 0
-			if (not NLOS) & (not int(data[randidx][0])):
+			if (not NLOS) & (not int(data[randidx][5])):
 				filt = 0
 
 			# add anchor if appropriate
 			if np.size(nodelist) == 0:
 				if filt != 1:
 					# get measured anchor range to tag
-					temp_len = data[randidx][5]
+					temp_len = data[randidx][4]
 					nodelist.append([temp_node, temp_len])
 					stat = 0
 			else:
@@ -113,7 +113,7 @@ def select_anchors(data, n, NLOS):
 					eq_stat = eq_stat | (np.linalg.norm(temp_node) == np.linalg.norm(item[0]))
 				if (filt == 0) and (eq_stat != 1):
 					# get measured anchor range to tag
-					temp_len = data[randidx][5]
+					temp_len = data[randidx][4]
 					nodelist.append([temp_node, temp_len])
 					stat = 0
 
@@ -147,24 +147,24 @@ def select_anchors_wls(data, n, regressor, NLOS):
 			# random number
 			randidx = random.randint(0, len(data) - 1)
 			# get anchor position
-			temp_node = np.array([data[randidx][3], data[randidx][4]])
+			temp_node = np.array([data[randidx][2], data[randidx][3]])
 
 			eq_stat = 0
 
 			filt = 1
 			# check LOS/NLOS
-			if NLOS & int(data[randidx][0]):
+			if NLOS & int(data[randidx][5]):
 				filt = 0
-			if NLOS & (not int(data[randidx][0])):
+			if NLOS & (not int(data[randidx][5])):
 				filt = 0
-			if (not NLOS) & (not int(data[randidx][0])):
+			if (not NLOS) & (not int(data[randidx][5])):
 				filt = 0
 
 			# add anchor if appropriate
 			if np.size(nodelist) == 0:
 				if filt != 1:
 					# get measured anchor range to tag
-					temp_len = data[randidx][5]
+					temp_len = data[randidx][4]
 					regress_err = regressor.predict(get_cir(data[randidx]))
 					nodelist.append([temp_node, temp_len])
 					weight_vector.append(regress_err[0][0])
@@ -175,7 +175,7 @@ def select_anchors_wls(data, n, regressor, NLOS):
 					eq_stat = eq_stat | (np.linalg.norm(temp_node) == np.linalg.norm(item[0]))
 				if (filt == 0) and (eq_stat != 1):
 					# get measured anchor range to tag
-					temp_len = data[randidx][5]
+					temp_len = data[randidx][4]
 					regress_err = regressor.predict(get_cir(data[randidx]))
 					nodelist.append([temp_node, temp_len])
 					weight_vector.append(regress_err[0][0])
@@ -211,24 +211,24 @@ def select_anchors_regression_wls(data, n, regressor, NLOS):
 			# random number
 			randidx = random.randint(0, len(data) - 1)
 			# get anchor position
-			temp_node = np.array([data[randidx][3], data[randidx][4]])
+			temp_node = np.array([data[randidx][2], data[randidx][3]])
 
 			eq_stat = 0
 
 			filt = 1
 			# check LOS/NLOS
-			if NLOS & int(data[randidx][0]):
+			if NLOS & int(data[randidx][5]):
 				filt = 0
-			if NLOS & (not int(data[randidx][0])):
+			if NLOS & (not int(data[randidx][5])):
 				filt = 0
-			if (not NLOS) & (not int(data[randidx][0])):
+			if (not NLOS) & (not int(data[randidx][5])):
 				filt = 0
 
 			# add anchor if appropriate
 			if np.size(nodelist) == 0:
 				if filt != 1:
 					# get measured anchor range to tag
-					temp_len = data[randidx][5]
+					temp_len = data[randidx][4]
 					regress_err = regressor.predict(get_cir(data[randidx]))
 					temp_len = temp_len - regress_err
 					nodelist.append([temp_node, temp_len])
@@ -240,7 +240,7 @@ def select_anchors_regression_wls(data, n, regressor, NLOS):
 					eq_stat = eq_stat | (np.linalg.norm(temp_node) == np.linalg.norm(item[0]))
 				if (filt == 0) and (eq_stat != 1):
 					# get measured anchor range to tag
-					temp_len = data[randidx][5]
+					temp_len = data[randidx][4]
 					regress_err = regressor.predict(get_cir(data[randidx]))
 					temp_len = temp_len - regress_err
 					nodelist.append([temp_node, temp_len])

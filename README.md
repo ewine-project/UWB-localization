@@ -65,7 +65,7 @@ For NLoS classification and ranging error regression models need to be built res
 	(tf)$ python build_regression_model.py    # Python 2.7
 	(tf)$ python3 build_regression_model.py   # Python 3
 
-**Note**: The process of training the classification model takes around 1 hour on an average computer.
+**Note**: The process of training the classification model takes around 2.5 hours on an average computer.
 
 
 ### Running the localization scripts
