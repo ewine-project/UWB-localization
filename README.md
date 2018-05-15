@@ -14,9 +14,9 @@ Installing Python software with Virtualenv can be useful to separate main system
 	$ sudo apt-get install python-pip python-dev python-virtualenv    # Python 2.7
 	$ sudo apt-get install python3-pip python3-dev python-virtualenv  # Python 3.n
 
-###### 2. Create a new virtual environment (in this case it's named 'tf' and is placed in /home/username/tf.):
-	$ virtualenv --system-site-packages /home/username/tf             # Python 2.7
-	$ virtualenv --system-site-packages -p python3 /home/username/tf  # Python 3.n
+###### 2. Create a new virtual environment (in this case it's named 'tf' and is placed in ~/tf):
+	$ virtualenv --system-site-packages ~/tf             # Python 2.7
+	$ virtualenv --system-site-packages -p python3 ~/tf  # Python 3.n
 
 ###### 3. Activate the new virtual environment 'tf':
 	$ source ~/tf/bin/activate

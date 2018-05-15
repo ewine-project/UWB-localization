@@ -31,7 +31,7 @@ class CNNClassifier(object):
 		self.scaler = joblib.load(('../NLOSClassificationModel/scaler_152_real.pkl'))
 
 	def Classify(self, sample_feed):
-		self.prediction = self.sess.run(self.eval_op, feed_dict={self.x: self.Scale(sample), self.labels: self.label_feed,
+		self.prediction = self.sess.run(self.eval_op, feed_dict={self.x: self.Scale(sample_feed), self.labels: self.label_feed,
 																 self.keep_prob: 1.0})
 		return self.prediction.indices[:][:]
 
