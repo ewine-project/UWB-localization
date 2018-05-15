@@ -124,8 +124,6 @@ def main(_):
     data = data_tools.nlos_classification_dataset('../data/NLOSClassification/dataset', split_factor = 0.6, scaling = True)
     print("rows: %d, columns: %d" % (data.train.samples.shape[0], data.train.samples.shape[1]))
     print("--- %s seconds ---" % (time.time() - start_time))
-
-    print(data.train.next_batch(2))
     
     # prepare folder to output model
     try:
