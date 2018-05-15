@@ -97,7 +97,7 @@ def training_graph(logits, labels, learning_rate):
     """
     # Create an operation that calculates loss.
     labels = tf.to_int64(labels)
-    cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=labels, name='cross_entropy')
+    cross_entropy = tf.nn.softmax_cross_entropy_with_logits_v2(logits=logits, labels=labels, name='cross_entropy')
     loss = tf.reduce_mean(cross_entropy, name='cross_entropy_mean')
     # Create ADAM optimizer with given learning rate.
     optimizer = tf.train.AdamOptimizer(learning_rate)
@@ -166,7 +166,7 @@ def main(_):
             confusion = tf.contrib.metrics.confusion_matrix(tf.argmax(logits,1), tf.argmax(labels,1), num_classes=2)
         
         # Add the variable initializer Op.
-        init = tf.initialize_all_variables()
+        init = tf.global_variables_initializer()
         
         # Create a saver for writing training checkpoints.
         saver = tf.train.Saver()
