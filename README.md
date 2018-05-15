@@ -6,6 +6,43 @@ The code needs the following python modules:
 	- numpy
 	- scikit-learn
 	- tensorflow
+
+### Installation on Ubuntu with Virtualenv
+Installing Python software with Virtualenv can be useful to separate main system Python installation from separate installation with distinctive set of features and libraries installed. This prevents breaking the existing installation of Python and libraries.
+
+###### 1. Install pip and Virtualenv:	
+	$ sudo apt-get install python-pip python-dev python-virtualenv for Python 2.7
+	$ sudo apt-get install python3-pip python3-dev python-virtualenv for Python 3.n
+
+###### 2. Create a new virtual environment (in this case it's named 'tf' and is placed in /home/username/tf.):
+	$ virtualenv --system-site-packages /home/username/tf # for Python 2.7
+	$ virtualenv --system-site-packages -p python3 /home/username/tf # for Python 3.n
+
+###### 3. Activate the new virtual environment 'tf':
+	$ source ~/tf/bin/activate
+
+###### 4. Install the latest pip:
+	(tf)$ easy_install -U pip
+
+###### 5. Install tensorflow in the activated 'tf' virtual environment:
+	(tf)$ pip install --upgrade tensorflow       # Python 2.7
+	(tf)$ pip3 install --upgrade tensorflow      # Python 3
+	(tf)$ pip install --upgrade tensorflow-gpu   # Python 2.7 with gpu support
+	(tf)$ pip3 install --upgrade tensorflow-gpu  # Python 3 with gpu support
+	
+If the installation process fails, for more details check the official [Tensorflow installation instructions](https://www.tensorflow.org/install/)
+
+###### 6. Install Pandas Python package:
+	(tf)$ pip install pandas   # Python 2.7
+	(tf)$ pip3 install pandas  # Python 3
+	
+###### 7. Install scikit-learn Python package:
+	(tf)$ pip install sklearn   # Python 2.7
+	(tf)$ pip3 install sklearn  # Python 3
+	
+###### 8. Install scipy Python package:
+	(tf)$ pip install scipy   # Python 2.7
+	(tf)$ pip3 install scipy  # Python 3
 	
 ### Tensorflow installation 
 I prefer installing the TensorFlow using native pip. On 64-bit Ubuntu with no GPU support and Python3 installation goes like:

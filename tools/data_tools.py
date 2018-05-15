@@ -99,7 +99,7 @@ def import_raw_from_files(data_dir):
 				if input_data[i, 0] == 0:
 					output_data[i, 0] = 1
 				else:
-					output_data[i, 0] = 1
+					output_data[i, 0] = 0
 			# put data into output array
 			output_data[:, 1:] = input_data[:, :-1]
 			if first > 0:
