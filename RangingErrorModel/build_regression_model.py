@@ -195,7 +195,7 @@ def main(_):
 
                 # Write a checkpoint.
                 saver.save(sess, checkpoint_file, global_step=step)
-    
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
