@@ -44,19 +44,6 @@ If the installation process fails, for more details check the official [Tensorfl
 	(tf)$ pip install scipy   # Python 2.7
 	(tf)$ pip3 install scipy  # Python 3
 	
-### Tensorflow installation 
-I prefer installing the TensorFlow using native pip. On 64-bit Ubuntu with no GPU support and Python3 installation goes like:
-	
-	sudo apt-get install python3-pip python3-dev
-	pip3 install tensorflow
-
-For complete installation instructions and installation on other platforms, please check the [Tensorflow installation](https://www.tensorflow.org/install/). 
-
-### numpy installation
-	pip3 install numpy
-
-### Scikit-learn installation
-	pip3 install sklearn
 
 ## Citation
 If you are using our data set in your research, citation of the following paper would be greatly appreciated.

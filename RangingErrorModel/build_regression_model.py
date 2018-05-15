@@ -116,7 +116,7 @@ def main(_):
     # import data
     start_time = time.time()
     
-    data = data_tools.error_regression_dataset(['../data/evaluation/dataset1/tag_room0.csv', '../data/evaluation/dataset2/tag_room0.csv'], split_factor=0.6, scaling=True)
+    data = data_tools.error_regression_dataset(['../data/localization/dataset1/tag_room0.csv', '../data/localization/dataset2/tag_room0.csv'], split_factor=0.6, scaling=True)
     print("rows: %d, columns: %d" % (data.train.samples.shape[0], data.train.samples.shape[1]))
     print("--- %s seconds ---" % (time.time() - start_time))
     
@@ -163,7 +163,7 @@ def main(_):
             err_op = tf.reduce_sum(tf.cast(batch_error, tf.float32))
         
         # Add the variable initializer Op.
-        init = tf.initialize_all_variables()
+        init = tf.global_variables_initializer()
         
         # Create a saver for writing training checkpoints.
         saver = tf.train.Saver()

@@ -152,6 +152,11 @@ def import_localization_data(file_paths):
 	"""
 	# import from file
 	input_arr = import_raw_csv_file(file_paths[0])
+	if len(file_paths) > 1:
+		for item in file_paths[1:]:
+			temp = import_raw_csv_file(item)
+			input_arr = np.vstack((input_arr, temp))
+
 	# randomize input array
 	random.shuffle(input_arr)
 
@@ -160,33 +165,12 @@ def import_localization_data(file_paths):
 	cir_arr = zeros((len(input_arr), 152))
 
 	for i in range(len(input_arr)):
-		fp_idx = int(input_arr[i][6])
+		fp_idx = int(input_arr[i][8])
 		# calculate ranging error
-		error_arr[i] = math.fabs(math.sqrt(math.pow(input_arr[i][1] - input_arr[i][3], 2) +
-										   math.pow(input_arr[i][2] - input_arr[i][4], 2)) - input_arr[i][5])
+		error_arr[i] = math.fabs(math.sqrt(math.pow(input_arr[i][0] - input_arr[i][2], 2) +
+										   math.pow(input_arr[i][1] - input_arr[i][3], 2)) - input_arr[i][4])
 		# pack cir to output cir array
-		cir_arr[i] = input_arr[i][fp_idx + 15: fp_idx + 15 + 152] / input_arr[i][12]
-
-	if len(file_paths) > 1:
-		for item in file_paths[1:]:
-			temp = import_raw_csv_file(item)
-			# randomize input array
-			random.shuffle(temp)
-
-			# create blank output_arrays
-			error_temp = zeros((len(temp), 1))
-			cir_temp = zeros((len(temp), 152))
-
-			for i in range(len(temp)):
-				fp_idx = int(temp[i][6])
-				# calculate ranging error
-				error_temp[i] = math.fabs(math.sqrt(math.pow(temp[i][1] - temp[i][3], 2) +
-													math.pow(temp[i][2] - temp[i][4], 2)) - temp[i][5])
-				# pack cir to output cir array
-				cir_temp[i] = temp[i][fp_idx + 15: fp_idx + 15 + 152] / temp[i][12]
-
-			error_arr = np.vstack((error_arr, error_temp))
-			cir_arr = np.vstack((cir_arr, cir_temp))
+		cir_arr[i] = input_arr[i][fp_idx + 15: fp_idx + 15 + 152] / input_arr[i][17]
 
 	return error_arr, cir_arr
 
