@@ -67,12 +67,35 @@ To import data set data into Python environment, **uwb_dataset.py** script from 
 ## Citation
 If you are using our data set in your research, citation of the following paper would be greatly appreciated.
 
-[Klemen Bregar, Andrej Hrovat, Mihael Mohorčič, “NLOS Channel Detection with Multilayer Perceptron in Low-Rate Personal Area Networks for Indoor Localization Accuracy Improvement”. Proceedings of the 8th Jožef Stefan International Postgraduate School Students’ Conference, Ljubljana, Slovenia, May 31-June 1, 2016.](https://www.researchgate.net/publication/308986067_NLOS_Channel_Detection_with_Multilayer_Perceptron_in_Low-Rate_Personal_Area_Networks_for_Indoor_Localization_Accuracy_Improvement)
+Plain text:
 
+	K. Bregar and M. Mohorčič, "Improving Indoor Localization Using Convolutional Neural Networks on Computationally Restricted Devices," in IEEE Access, vol. 6, pp. 17429-17441, 2018.
+	doi: 10.1109/ACCESS.2018.2817800
+	keywords: {Computational modeling;Convolutional neural networks;Distance measurement;Estimation;Heuristic algorithms;Performance evaluation;Prediction algorithms;Channel impulse response;convolutional neural network;deep learning;indoor localization;non-line-of-sight;ranging error mitigation;ultra-wide band},
+	URL: http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8320781&isnumber=8274985
+	
+
+BibTeX: 
+
+	@ARTICLE{8320781,
+		author={K. Bregar and M. Mohorčič},
+		journal={IEEE Access},
+		title={Improving Indoor Localization Using Convolutional Neural Networks on Computationally Restricted Devices},
+		year={2018},
+		volume={6},
+		number={},
+		pages={17429-17441},
+		keywords={Computational modeling;Convolutional neural networks;Distance measurement;Estimation;Heuristic algorithms;Performance evaluation;Prediction algorithms;Channel impulse response;convolutional neural network;deep learning;indoor localization;non-line-of-sight;ranging error mitigation;ultra-wide band},
+		doi={10.1109/ACCESS.2018.2817800},
+		ISSN={},
+		month={},}
+		
 ## Author and license
-Author of UWB LOS and NLOS Data Set and corresponding Python scripts is Klemen Bregar, **klemen.bregar@ijs.si**. 
+Author of UWB data sets and corresponding Python scripts is Klemen Bregar, **klemen.bregar@ijs.si**. 
 
-Copyright (C) 2017 SensorLab, Jožef Stefan Institute http://sensorlab.ijs.si
+Data sets are licensed under Creative Commons Attribution Share Alike 4.0 license.
+
+Copyright (C) 2018 SensorLab, Jožef Stefan Institute http://sensorlab.ijs.si
 
 ## Acknowledgement
 The research leading to these results has received funding from the European Horizon 2020 Programme project eWINE under grant agreement No. 688116.
