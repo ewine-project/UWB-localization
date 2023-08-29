@@ -31,7 +31,7 @@ Folder with data set is organized as follows:
 Whole data set is randomized and later split into 7 smaller files.
 
 ## File Structure
-First line in every data set file is a header with column names. Elements of every sample are:
+First line in every data set file is a header with column names. Elements of every sample are (in order of the .csv header):
 * NLOS (1 if NLOS, 0 if LOS)
 * Measured range (time of flight)
 * FP_IDX (index of detected first path element in channel impulse response (CIR) accumulator: in data set it can be accessed by **first_path_index+15**)
@@ -58,9 +58,9 @@ To import data set data into Python environment, **uwb_dataset.py** script from 
 	data = uwb_dataset.import_from_files()
 	
 	# divide CIR by RX preable count (get CIR of single preamble pulse)
-	# item[2] represents number of acquired preamble symbols
+	# item[9] represents number of acquired preamble symbols
 	for item in data:
-		item[15:] = item[15:]/float(item[2])
+		item[15:] = item[15:]/float(item[9])
 	
 	print(data)
 
